@@ -88,7 +88,7 @@ namespace ProductRepositoryTests.Repositories
         public async Task UpdateAsync_ShouldUpdateProduct()
         {
             // Arrange
-            var product = new Product { ProductId = "1", Name = "Updated Product" };
+            var product = new Product { ProductId = "654321", Name = "Updated Product" };
 
             var mockEntityEntry = new Mock<EntityEntry<Product>>();
             mockEntityEntry.SetupProperty(e => e.State, EntityState.Modified);
@@ -124,10 +124,10 @@ namespace ProductRepositoryTests.Repositories
         public async Task ExistsAsync_ShouldReturnTrue_WhenProductExists()
         {
             // Arrange
-            _mockSet.Setup(m => m.AnyAsync(p => p.ProductId == "1", default)).ReturnsAsync(true);
+            _mockSet.Setup(m => m.AnyAsync(p => p.ProductId == "872522", default)).ReturnsAsync(true);
 
             // Act
-            var result = await _repository.ExistsAsync("1");
+            var result = await _repository.ExistsAsync("872522");
 
             // Assert
             Assert.True(result);
